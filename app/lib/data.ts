@@ -216,3 +216,11 @@ export async function fetchFilteredCustomers(query: string) {
     throw new Error('Failed to fetch customer table.');
   }
 }
+
+const promises = [
+  fetchRevenue(),
+  fetchLatestInvoices(),
+  fetchCardData()
+];
+
+const [revenue, latestInvoices, cardData] = await Promise.all(promises);
